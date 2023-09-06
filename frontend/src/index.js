@@ -1,4 +1,13 @@
 import React from "react";
-import reactDOM from "react-dom";
+import { createRoot } from "react-dom/client";
+import "./styles.css";
+import { AlgoSelector } from "./AlgoSelector";
 
-reactDOM.render(<h1>Hello World!</h1>, document.getElementById("root"));
+const testAlgos = [
+  { id: 1, name: "test1" },
+  { id: 2, name: "test2" },
+  { id: 3, name: "test3" },
+];
+const root = createRoot(document.getElementById("root"));
+
+root.render(<AlgoSelector algos={testAlgos} />);

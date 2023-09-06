@@ -1,0 +1,25 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --color-primary-dark: #545c6a;
+  --color-primary-light: #c7cbd2;
+}
+
+/* input {
+  font: inherit;
+} */
+
+/* html {
+  font-size: 62.5%;
+} */
+
+body {
+  /* font-family: 'Ubuntu', sans-serif; */
+  background-color: var(--color-primary-light);
+}
