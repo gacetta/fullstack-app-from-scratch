@@ -95,7 +95,7 @@ export const AlgoRuntime = (props) => {
             />
           );
         })}
-      {result && (
+      {result !== null && (
         <AlgoResult result={result} args={resultArgs} algo={props.algo} />
       )}
       <button className="algoRuntime--button" onClick={handleClick}>

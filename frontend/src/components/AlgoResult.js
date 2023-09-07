@@ -7,7 +7,7 @@ export const AlgoResult = (props) => {
   return (
     <div className="AlgoResult">
       <h3>{`result of ${props.algo.name}(${cleanedUpArgs}):`}</h3>
-      <p className="AlgoResult--result">{props.result}</p>
+      <p className="AlgoResult--result">{String(props.result)}</p>
     </div>
   );
 };
