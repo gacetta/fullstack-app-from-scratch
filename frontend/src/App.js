@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { AlgoSelector } from "./components/AlgoSelector";
 import { AlgoDescription } from "./components/AlgoDescription";
+import { AlgoRuntime } from "./components/AlgoRuntime";
 
 const testAlgo1 = {
   id: "1",
@@ -47,7 +48,12 @@ export const App = () => {
   return (
     <>
       <AlgoSelector algos={allAlgos} handleAlgoSelect={handleAlgoSelect} />
-      {selectedAlgo && <AlgoDescription algo={selectedAlgo} />}
+      {selectedAlgo && (
+        <>
+          <AlgoDescription algo={selectedAlgo} />
+          <AlgoRuntime algo={selectedAlgo} />
+        </>
+      )}
     </>
   );
 };
