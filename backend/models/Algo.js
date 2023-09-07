@@ -3,7 +3,6 @@ require("dotenv").config();
 
 // connect to MongoDB
 const MONGO_URI = process.env.MONGO_URI;
-// console.log("uri:", MONGO_URI);
 
 mongoose
   .connect(MONGO_URI, {

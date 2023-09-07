@@ -4,7 +4,6 @@ const algoController = {};
 
 // MIDDLEWARE TO CREATE NEW ALGO
 algoController.createNewAlgo = async (req, res, next) => {
-  console.log("createNewAlgo");
   try {
     const newAlgo = req.body;
     res.locals.newAlgo = await Algo.create(newAlgo);
@@ -20,7 +19,6 @@ algoController.createNewAlgo = async (req, res, next) => {
 
 // MIDDLEWARE TO GET ALL ALGOS
 algoController.getAllAlgos = async (req, res, next) => {
-  console.log("getAllAlgos");
   try {
     const allAlgos = await Algo.find({});
     res.locals.allAlgos = allAlgos;
@@ -36,13 +34,10 @@ algoController.getAllAlgos = async (req, res, next) => {
 
 // MIDDLEWARE TO GET A SPECIFIC ALGO BY NAME
 algoController.getAlgoById = async (req, res, next) => {
-  console.log("getAlgo");
-
   try {
     const requestedAlgo = await Algo.findById(req.params._id);
     if (!requestedAlgo) throw new Error("requested algorithm not found");
     res.locals.requestedAlgo = requestedAlgo;
-    console.log("getAlgo running next()");
     return next();
   } catch (err) {
     return next({
@@ -55,7 +50,6 @@ algoController.getAlgoById = async (req, res, next) => {
 
 // MIDDLEWARE TO RUN ALGO WITH ARGS
 algoController.runAlgo = (req, res, next) => {
-  console.log("runAlgo");
   const providedArgs = req.body.args;
   const deserializedArgs = JSON.parse(providedArgs);
   const { funcParams, funcBody } = res.locals.requestedAlgo;

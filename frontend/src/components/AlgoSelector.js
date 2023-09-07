@@ -23,7 +23,7 @@ export const AlgoSelector = (props) => {
         {algoArr &&
           algoArr.map((algo) => {
             return (
-              <option key={algo.id} value={algo.id}>
+              <option key={algo._id} value={algo._id}>
                 {algo.name}
               </option>
             );

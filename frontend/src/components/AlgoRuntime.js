@@ -1,9 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
+import axios from "axios";
 import { ArgumentField } from "./ArgumentField";
 import { AlgoResult } from "./AlgoResult";
 
 export const AlgoRuntime = (props) => {
-  const { args } = props.algo;
+  const { args, _id } = props.algo;
 
   // process the args into proper shape for controlled input
   // {id: 1, type: 'number', value:''}
@@ -66,7 +67,16 @@ export const AlgoRuntime = (props) => {
 
   const handleClick = () => {
     setResultArgs(serializeArgs());
-    setResult("SUCCESS");
+    axios
+      .post(`/algos/${_id}/run`, {
+        args: serializeArgs(),
+      })
+      .then((response) => {
+        setResult(response.data.result);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
     clearInputFields();
     focusInputField();
   };
