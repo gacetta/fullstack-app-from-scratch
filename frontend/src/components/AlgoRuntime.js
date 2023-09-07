@@ -1,20 +1,35 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { ArgumentField } from "./ArgumentField";
 import { AlgoResult } from "./AlgoResult";
 
 export const AlgoRuntime = (props) => {
   const { args } = props.algo;
-  // process the array into proper shape for controlled input
-  // {id: 1, type: 'number', value:''}
-  const processedArgs = args.map((arg, index) => ({
-    id: index + 1,
-    type: arg,
-    value: "",
-  }));
 
+  // process the args into proper shape for controlled input
+  // {id: 1, type: 'number', value:''}
+  let processedArgs = processArgs();
+
+  function processArgs() {
+    return args.map((arg, index) => ({
+      id: index + 1,
+      type: arg,
+      value: "",
+    }));
+  }
+
+  // update input fields when new algo is selected
+  useEffect(() => {
+    setInputFields(processArgs());
+    setResult(null);
+  }, [props.algo]);
+
+  // local state
   const [inputFields, setInputFields] = useState(processedArgs);
   const [result, setResult] = useState(null);
+  const [resultArgs, setResultArgs] = useState(null);
+  const ref = useRef(null);
 
+  // for controlled inputs
   const handleInputChange = (id, event) => {
     const newInputFields = inputFields.map((field) => {
       if (field.id === id) {
@@ -23,6 +38,17 @@ export const AlgoRuntime = (props) => {
       return field;
     });
     setInputFields(newInputFields);
+  };
+
+  const clearInputFields = () => {
+    const newInputFields = inputFields.map((field) => {
+      return { ...field, value: "" };
+    });
+    setInputFields(newInputFields);
+  };
+
+  const focusInputField = () => {
+    ref.current.focus();
   };
 
   // input: none
@@ -39,9 +65,10 @@ export const AlgoRuntime = (props) => {
   };
 
   const handleClick = () => {
-    console.log("Arg Values", inputFields);
-    console.log(serializeArgs());
+    setResultArgs(serializeArgs());
     setResult("SUCCESS");
+    clearInputFields();
+    focusInputField();
   };
 
   return (
@@ -54,11 +81,12 @@ export const AlgoRuntime = (props) => {
               key={`${arg.id}-${arg.type}`}
               arg={arg}
               handleInputChange={handleInputChange}
+              reference={ref}
             />
           );
         })}
       {result && (
-        <AlgoResult result={result} algo={props.algo} args={serializeArgs()} />
+        <AlgoResult result={result} args={resultArgs} algo={props.algo} />
       )}
       <button className="algoRuntime--button" onClick={handleClick}>
         Run Algorithm

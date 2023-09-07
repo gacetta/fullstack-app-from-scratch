@@ -15,6 +15,8 @@ export const ArgumentField = (props) => {
         placeholder={`please enter a ${type}`}
         value={value}
         onChange={(e) => props.handleInputChange(id, e)}
+        ref={id === 1 ? props.reference : null}
+        autoFocus={id === 1 ? true : false}
       ></input>
     </div>
   );
