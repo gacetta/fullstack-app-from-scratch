@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { ArgumentField } from "./ArgumentField";
+import { AlgoResult } from "./AlgoResult";
 
 export const AlgoRuntime = (props) => {
   const { args } = props.algo;
@@ -12,6 +13,7 @@ export const AlgoRuntime = (props) => {
   }));
 
   const [inputFields, setInputFields] = useState(processedArgs);
+  const [result, setResult] = useState(null);
 
   const handleInputChange = (id, event) => {
     const newInputFields = inputFields.map((field) => {
@@ -39,6 +41,7 @@ export const AlgoRuntime = (props) => {
   const handleClick = () => {
     console.log("Arg Values", inputFields);
     console.log(serializeArgs());
+    setResult("SUCCESS");
   };
 
   return (
@@ -54,6 +57,9 @@ export const AlgoRuntime = (props) => {
             />
           );
         })}
+      {result && (
+        <AlgoResult result={result} algo={props.algo} args={serializeArgs()} />
+      )}
       <button className="algoRuntime--button" onClick={handleClick}>
         Run Algorithm
       </button>
