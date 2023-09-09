@@ -5,9 +5,9 @@ export const AlgoResult = (props) => {
   const cleanedUpArgs = trimmedArgs.replaceAll(",", ", ");
 
   return (
-    <div className="AlgoResult">
-      <h3>{`result of ${props.algo.name}(${cleanedUpArgs}):`}</h3>
-      <p className="AlgoResult--result">{String(props.result)}</p>
+    <div className="algoResult">
+      <h3 className="algoResult--header">{`result of ${props.algo.name}(${cleanedUpArgs}):`}</h3>
+      <p className="algoResult--result">{String(props.result)}</p>
     </div>
   );
 };

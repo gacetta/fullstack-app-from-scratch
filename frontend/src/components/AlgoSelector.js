@@ -8,14 +8,19 @@ export const AlgoSelector = (props) => {
   };
 
   return (
-    <section className="algoSelector">
-      <label id="algoSelector--label" htmlFor="algoSelector--dropdown">
+    <section className="algoSelector flex-col">
+      <label
+        id="algoSelector--label"
+        htmlFor="algoSelector--dropdown"
+        className="label--med"
+      >
         Select an algorithm
       </label>
       <select
         id="algoSelector--dropdown"
         name="algoSelector--dropdown"
         defaultValue="Select an algorithm"
+        className="inputControl"
         onChange={onChangeHandler}
         required
       >

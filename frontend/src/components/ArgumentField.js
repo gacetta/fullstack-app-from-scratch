@@ -3,12 +3,12 @@ import React from "react";
 export const ArgumentField = (props) => {
   const { id, type, value } = props.arg;
   return (
-    <div id={`argumentField${id}`}>
-      <label className="ArgumentField--label" htmlFor={`arg${id}`}>
+    <div id={`argumentField${id}`} className="argumentField  flex-col">
+      <label className="argumentField--label" htmlFor={`arg${id}`}>
         {type}
       </label>
       <input
-        className="ArgumentField--input"
+        className="argumentField--input inputControl"
         type="text"
         id={`arg${id}`}
         name={`arg${id}`}

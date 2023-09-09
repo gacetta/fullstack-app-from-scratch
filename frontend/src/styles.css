@@ -6,20 +6,185 @@
   box-sizing: border-box;
 }
 
+/* variables */
 :root {
-  --color-primary-dark: #545c6a;
-  --color-primary-light: #c7cbd2;
+  --color-primary-dark: #262119;
+  --color-primary-light: #767676;
+  --color-primary-xlight: whitesmoke;
+  --color-primary-background: #white;
+  --color-accent: #fcc006;
+  --border-radius: .4rem;
+  --padding-small: .5rem;
+  --padding-med: .75rem;
+  --padding-large: 1.5rem;
+  --margin-small: .3rem;
+  --margin-med: .5rem;
+  --margin-large: 1rem;
+  --margin-xlarge: 1.5rem;
+  --fontSize-small: 1rem;
+  --fontSize-med: 1.2rem;
+  --fontSize-large: 2rem;
 }
-
-/* input {
-  font: inherit;
-} */
-
-/* html {
-  font-size: 62.5%;
-} */
 
 body {
-  /* font-family: 'Ubuntu', sans-serif; */
-  background-color: var(--color-primary-light);
+  font-family: 'Ubuntu', sans-serif;
+  color: var(--color-primary-dark);
+  background-color: var(--color-primary-background);
 }
+
+/* Layout */
+.main-container {
+  border: var(--color-primary-dark) 1px solid;
+  max-width: 40rem;
+  margin: 1rem auto;
+  padding: var(--padding-large);
+  border-radius: var(--border-radius);
+  background-color: var(--color-primary-xlight);
+  -webkit-box-shadow: 10px 10px 19px -3px rgba(0,0,0,0.35);
+  -moz-box-shadow: 10px 10px 19px -3px rgba(0,0,0,0.35);
+  box-shadow: 10px 10px 19px -3px rgba(0,0,0,0.35);
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+/* input control */
+.inputControl {
+  padding: var(--padding-small);
+  border-radius: var(--border-radius);
+  font: inherit;
+}
+
+.inputControl:focus {
+  outline-color: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+.algoRuntime--button {
+  padding: var(--padding-small);
+  width: 100%;
+  background-color: var(--color-accent);
+  font: inherit;
+  border-radius: var(--border-radius);
+  transition: all .2s ease-in;
+}
+
+.algoRuntime--button:hover {
+  -webkit-box-shadow: 10px 10px 15px 0px rgba(0,0,0,0.35);
+  -moz-box-shadow: 10px 10px 15px 0px rgba(0,0,0,0.35);
+  box-shadow: 10px 10px 15px 0px rgba(0,0,0,0.35);
+  transform: translateY(-3px);
+}
+
+.algoRuntime--button:active {
+  transform: translateY(-1px);
+  -webkit-box-shadow: 10px 10px 5px -5px rgba(0,0,0,0.35);
+  -moz-box-shadow: 10px 10px 5px -5px rgba(0,0,0,0.35);
+  box-shadow: 10px 10px 5px -5px rgba(0,0,0,0.35);
+}
+
+/* Algo Selector */
+.algoSelector,
+.algoDescription,
+.algoResult {
+  margin-bottom: var(--margin-xlarge);
+
+  & label {
+    margin-bottom: var(--margin-small);
+  }
+}
+
+/* Algo Description */
+.algoDescription,
+.algoResult {
+  padding: var(--padding-med);
+  background: white;
+  border-radius: var(--border-radius);
+  border: 2px var(--color-primary-dark) solid;
+  border-bottom: 2px var(--color-primary-light) solid;
+  border-right: 2px var(--color-primary-light) solid;
+  -webkit-box-shadow: inset 10px 9px 34px -31px rgba(0,0,0,0.62);
+-moz-box-shadow: inset 10px 9px 34px -31px rgba(0,0,0,0.62);
+box-shadow: inset 10px 9px 34px -31px rgba(0,0,0,0.62);
+}
+
+.algoRuntime {
+  & input {
+    margin-bottom: var(--margin-large);
+  }
+}
+
+/* Typography */
+.label--med {
+  font-size: var(--fontSize-med);
+}
+
+.label--large {
+  font-size: var(--fontSize-large);
+  margin-bottom: var(--margin-large);
+}
+
+.body-text {
+  font-size: var(fontSize-small);
+  margin-bottom: var(--margin-med);
+}
+
+#algoSelector--label {
+  font-size: 1.4rem;
+}
+
+
+.algoResult--header {
+  margin-bottom: var(--margin-med);
+}
+
+.algoResult--result {
+  text-align: center;
+  font-size: var(--fontSize-large);
+}
+
+.algoRuntime--header {
+  font-size: 1.2rem;
+  margin-bottom: var(--margin-med);
+}
+
+.argumentField--label {
+  text-transform: uppercase;
+  font-style: italic;
+  font-size: var(--fontSize-small);
+  margin-bottom: var(--margin-small);
+}
+
+/* STUPID ANIMATED BACKGROUND
+body {
+	background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+	height: 100vh;
+}
+
+.algoRuntime--button {
+	background: linear-gradient(45deg, #23a6d5, #23d5ab, #e73c7e);
+  color: white;
+	background-size: 400% 400%;
+	animation: gradient 8s ease infinite;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+} */
