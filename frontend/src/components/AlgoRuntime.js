@@ -83,7 +83,7 @@ export const AlgoRuntime = (props) => {
 
   return (
     <section className="algoRuntime">
-      <p>Arguments:</p>
+      <p className="algoRuntime--header label--med">Enter arguments here:</p>
       {args.length &&
         inputFields.map((arg) => {
           return (
